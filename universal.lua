@@ -2,9 +2,9 @@ local Version = "1.6.45"
 local WindUI = loadstring(game:HttpGet("https://github.com/Footagesus/WindUI/releases/download/" .. Version .. "/main.lua"))()
 local Window = WindUI:CreateWindow({
     Title = "Wlee Hub | Universal",
-    Icon = "world",
-    Author = "BY | WLeeGaming",
-    Folder = "343424",
+    Icon = "earth",
+    Author = "BY | @Wlee Gaming",
+    Folder = "adminpanel",
     
     Size = UDim2.fromOffset(580, 460),
     Transparent = true,
@@ -22,72 +22,37 @@ local Window = WindUI:CreateWindow({
         end,
     },
 })
-Window:Tag({
-    Title = "Working,
-    Color = Color3.fromHex("#30ff6a")
-})
-Window:Tag({
-    Title = "v1.1",
-    Color = Color3.fromHex("#30ff6a")
--- end tag window
-})
-local Maintab = Window:Tab({
-    Title = "Home",
-    Icon = "house",
+-- Tag Start
+Window:Tag({Title = "Working",Color = Color3.fromHex("#30ff6a")})
+Window:Tag({Title = "v1.1",Color = Color3.fromHex("#c91310")})
+-- Tag End
+
+-- MainSection Start
+local MainSection = Window:Section({Title = "Main",Icon = "house",Opened = true,})
+-- MainSection End
+
+-- HomeTab Start
+local HomeTab = MainSection:Tab({Title = "Home",Icon = "house",Locked = false,})
+HomeTab:Paragraph({
+    Title = "welcome to wlee hub !",
+    Desc = "what is WLee hub?, wlee hub is a a powerfull script to use, and in wleehub you can find any script game.",
+    Image = "earth",
+    ImageSize = 30,
+    Thumbnail = "https://tr.rbxcdn.com/180DAY-69b2299a957644e9a7e866936574367e/768/432/Image/Webp/noFilter",
+    ThumbnailSize = 80,
     Locked = false,
+    Buttons = {
+        {
+            Icon = "external-link",
+            Title = "Join Our Discrod Right Now!",
+            Callback = function() settoclippboard() end,
+        }
+    }
 })
-local AboutTab = Window:Tab({
-    Title = "About",
-    Icon = "abadge-info",
-    Locked = false,
-})
-local PlayerTab = Window:Tab({
-    Title = "Player",
-    Icon = "user",
-    Locked = false,
-})
-local GameTab = Window:Tab({
-    Title = "Game",
-    Icon = "gamepad-2",
-    Locked = false,
-})
-local DevTab = Window:Tab({
-    Title = "Developer Script",
-    Icon = "folder-code",
-    Locked = false,
-})
--- Buat Settings Tab
-local SettingsTab = Window:Tab({
-    Title = "Settings",
-    Icon = "settings",
+local Changelogtabsection = HomeTab:Section({ Title = "Changelog",TextXAlignment = "Left",TextSize = 17,})
+Changelogtabsection:Paragraph({
+    Title = "Update V 1.1",
+    Desc = "",
     Locked = false,
 })
 
--- Dropdown buat ganti tema
-local ThemeDropdown = SettingsTab:Dropdown({
-    Title = "UI Theme",
-    Desc = "Change WindUI theme",
-    Values = { "Default", "Dark", "Light", "Aqua", "Rose" }, -- isi sesuai tema yg support WindUI
-    Default = "Default",
-    Callback = function(selected)
-        WindUI:SetTheme(selected)
-        print("Theme Changed: " .. selected)
-    end
-})
-
--- Register ke config system
-myConfig:Register("themeSetting", ThemeDropdown)
-
--- Tombol buat save manual (opsional, kalau nggak config auto-save)
-SettingsTab:Button({
-    Title = "Save Config",
-    Callback = function()
-        myConfig:Save()
-        WindUI:Notify({
-            Title = "Settings",
-            Content = "Config saved successfully!",
-            Duration = 3,
-            Icon = "check"
-        })
-    end,
-})
