@@ -28,7 +28,7 @@ Window:Tag({Title = "v1.1",Color = Color3.fromHex("#c91310")})
 -- Tag End
 
 -- MainSection Start
-local MainSection = Window:Section({Title = "Main",Icon = "house",Opened = true,})
+local MainSection = Window:Section({Title = "Main",Opened = true,})
 -- MainSection End
 
 -- HomeTab Start
@@ -37,7 +37,7 @@ HomeTab:Paragraph({
     Title = "welcome to wlee hub !",
     Desc = "what is WLee hub?, wlee hub is a a powerfull script to use, and in wleehub you can find any script game.",
     Image = "earth",
-    ImageSize = 30,
+    ImageSize = 50,
     Thumbnail = "https://tr.rbxcdn.com/180DAY-69b2299a957644e9a7e866936574367e/768/432/Image/Webp/noFilter",
     ThumbnailSize = 80,
     Locked = false,
@@ -45,14 +45,24 @@ HomeTab:Paragraph({
         {
             Icon = "external-link",
             Title = "Join Our Discrod Right Now!",
-            Callback = function() settoclippboard() end,
+            Callback = function() settoclipboard() end,
         }
     }
 })
 local Changelogtabsection = HomeTab:Section({ Title = "Changelog",TextXAlignment = "Left",TextSize = 17,})
 Changelogtabsection:Paragraph({
     Title = "Update V 1.1",
-    Desc = "",
+    Desc = "-added new tab for player and game",
     Locked = false,
 })
+local PlayerSection = Window:Section({Title = "Main",Opened = true,})
+local AdminTab = PlayerSection:Tab({Title = "Admin Commands",Icon = "user",Locked = false,})
+Button = AdminTab:Button({
+    Title = "Infinite Yield",
+    Locked = false,
+    Callback = function()
+       loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+    end
+})
+
 
